@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css?family=Spartan:100,200,300,400,500,600,700,800,900&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Spartan', sans-serif;;
+}
+.landing-section{
+    background: url("images/hero-background-desktop.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 90vh;
+
+}
+
+.home-page-heading{
+    font-size: 3em;
+    color: white;
+    margin-bottom: 150px;
+    position: relative;
+    top: 60px;
+
+}
+.landing-page-info{
+    margin-left: 12vw;
+}
+.landing-page-info h2{
+    font-size: 4rem;
+    font-weight: 200;
+    color: white;
+    margin-bottom: 20px;
+}
+.landing-page-info p{
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    line-height: 180%;
+    margin-bottom: 50px;
+}
+.book-table{
+    width: 250px;
+    height: 65px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    transition: 0.5s;
+    transition-delay: 0.1s;
+}
+.book-table:hover{
+    background-color: white;
+    border: white;
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+.section-2{
+    width: 100vw;
+    height: 800px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.page2-img{
+    width: 540px;
+    height: 720px;
+    top: -70px;
+    /* margin-right: 160px; */
+    box-shadow: rgb(136, 136, 136) 0em 5em 8em 0;
+    z-index: 100;
+    position: relative;
+}
+
+.background-grey-box-page-2{
+    width: 940px;
+    height: 300px;
+    background-color: rgb(239, 239, 239);
+    border-top-right-radius: 100px;
+    position: absolute;
+    top: 1050px;
+    z-index: -100;
+}
+.page-2-text{
+
+    top: 175px;
+    position: relative;
+    margin-top: 40px;
+}
+
+.line-circle{
+    display: flex;
+    align-items: center;
+    margin-bottom: 45px;
+}
+.circle{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    border: 1.5px solid #9E7F66;
+    margin-right: 8px;
+}
+.line{
+    height: 1.5px;
+    width: 50px;
+    background-color: #9E7F66;
+    text-align: center;
+}
+.page-2-text h1{
+    font-size: 2.7rem;
+}
+.page-2-text p{
+    padding: 30px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(65, 65, 65);
+    line-height: 180%;
+}
+
+
+
+.page-3-img{
+    z-index: 100;
+    align-self: flex-start;
+    box-shadow: rgba(77, 77, 77, 0.504) 0 0 2em 0.2em;
+    z-index: 100;
+    position: relative;
+    margin-top: 50px;
+    width: 500px;
+    height:730px;
+}
+.background-grey-box-page-3{
+    width: 880px;
+    height: 300px;
+    background-color: rgb(243, 243, 243);
+    border-top-left-radius: 100px;
+    position: absolute;
+    top: 1900px;
+    right: 0;
+    z-index: -100;
+}
+.strips{
+    position: absolute;
+    top: 1860px;
+    right: 4vw;
+    z-index: 1000;
+
+}
+.section-4{
+    background-color: black;
+    width: 100vw;
+    height: 700px;
+    position: relative;
+    top: -175px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.page-4-text{
+    align-self: flex-start;
+}
+.page-4-text p{
+    color: white;
+
+}
+.highlights{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.highlight-image{
+    display: flex;
+
+}
+.highlight-image img{
+    width: 130px;
+    height: auto;
+}
+.highlight-image .line{
+    position: relative;
+    top: 1rem;
+}
+.highlight{
+    display: flex;
+    gap: 2rem;
+}
+.highlight-info{
+    width: 400px;
+    line-height: 200%;
+}
+.highlights>hr{
+    opacity: 0.1;
+
+}
+.section-5{
+    display: flex;
+    gap: 130px;
+    align-items: center;
+    position: relative;
+    padding-bottom: 100px;
+}
+.social-events-images img{
+    width: 540px;
+    height: auto;
+}
+
+.strips-in-events{
+    position: relative;
+    left: 110px;
+    top: -560px;
+
+}
+.book-table-events{
+    color: white;
+    background-color: black;
+}
+.book-table-events:hover{
+    border:   1px solid black ;
+}
+.social-events-info{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.social-events-info h2{
+    font-size: 2.7rem;
+}
+.social-events-info p{
+    font-size: 1.1rem;
+    line-height: 150%;
+}
+.images-menu{
+    display: flex;
+    flex-direction: column;
+    line-height: 250%;
+}
+.event-image-menu{
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: grey;
+}
+.line-and-toggler{
+    display: flex;
+    align-items: center;
+}
+.line-toggler{
+    width: 160px;
+    position: relative;
+    left: -200px;
+    z-index: -100;
+
+}
+.line-and-toggler a{
+    position: relative;
+    left: -160px;
+}
+.background-grey-box-page-5{
+    width: 570px;
+    height: 400px;
+    background-color: rgb(243, 243, 243);
+    border-top-right-radius: 100px;
+    position: absolute;
+    top: 2900px;
+    left: 0;
+    z-index: -100;
+}
+.section-6{
+    background: url("images/Ready.jpg") ;
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    height: 240px;
+    align-items: center;
+
+}
+.section-6 h1{
+    font-size: 2.5rem ;
+    color: white;
+}
+.book-table-section-6{
+    background-color: transparent;
+    border:1px solid white ;
+}
+.footer{
+    padding-top: 100px;
+    display: flex;
+    background-color: black;
+    color: white;
+    gap: 75px;
+    height: 600px;
+}
+.contact-info{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 30px;
+}
+.contact-info p,.contact-info div{
+    color: rgb(181, 181, 181);
+    line-height: 200%;
+    font-size: 1rem;
+}
+.contact-us{
+
+    line-height: 200%;
+
+}
+.contact-us h1{
+    display: inline;
+}
+.contact-us input{
+    width: 140%;
+    height: 45px;
+    background-color: rgba(131, 129, 129, 0.517);
+    color: white;
+    border-radius: 8px;
+    margin: 10px 0;
+    outline: white;
+    border: 2px solid black;
+    padding: 0 10px;
+
+
+}
+.contact-us input::placeholder{
+    color: white;
+    font-size: 0.9rem;
+    opacity: 0.8;
+
+
+
+}   
+.contact-us-send-button{
+    width: 100px;
+    height: 50px;
+    font-weight: 600;
+    background-color: rgb(241, 91, 26);
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    border: none;
+}
