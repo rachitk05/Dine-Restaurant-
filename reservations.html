@@ -3,19 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reservations | dine</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles/style.css">
+  <title>Frontend Mentor | Dine Website Challenge</title>
+  <script defer src="./booking.js"></script>
   <link rel="stylesheet" href="style_reservation.css">
 </head>
 <body>
-  <section class="landing-section">
-    <div class="landing-page-info">
-        <h1 class="home-page-heading">dine</h1>
-        <h2>Reservations</h2>
-        <p>We can't wait to host you. If you have any specail <br>requirements please feel free to call on the phone <br>number below. We'll be happy to accommodate you.</p>
-    </div>
-</section>
-<svg class="strips" xmlns="http://www.w3.org/2000/svg" width="160" height="76"><g fill="#9E7F66" fill-rule="evenodd"><path d="M0 70h160v6H0zM0 56h160v6H0zM0 42h160v6H0zM0 28h160v6H0zM0 14h160v6H0zM0 0h160v6H0z"/></g></svg>
-<div class="background-grey-box"></div>
+  <main>
+    <section class="reservations">
+      <div class="reservations__bg-1"></div>
+      <div class="reservations__bg-2"></div>
+      <div class="reservations__container">
+        <div class="logo">
+          <h1>dine</h1>
+        </div>
+        <div class="reservations__content">
+          <div class="reservations__content__text">
+            <h1 class="reservations-h1">Reservations</h1>
+            <p class="reservations-info">We can’t wait to host you. If you have any special requirements please feel free to call on the phone number below. We’ll be happy to accommodate you.</p>
+            <a href="#reserve-place" class="btn btn--dark btn--reserve">Reserve Place</a>
+          </div>
+          <div class="form reservations__content__form">
+            <div class="form__input-field form__input-field--text">
+              <input class="input-box" type="text" name="name" id="name" placeholder="Name">
+            </div>
+            <div class="form__input-field form__input-field--text">
+              <input class="input-box" type="email" name="email" id="email" placeholder="Email">
+            </div>
+            <div class="form__datetime-field">
+              <div class="datetime-field-name-container">
+                <p class="t-form t-form--regular datetime-field-name">Pick a date</p>
+              </div>
+              <div class="input-containers">
+                <div class="input-container">
+                  <input class="input-box input-box--small" type="text" name="month" id="month" placeholder="MM" maxlength="2">
+                </div>
+                <div class="input-container">
+                  <input class="input-box input-box--small" type="text" name="day" id="day" placeholder="DD" maxlength="2">
+                </div>
+                <div class="input-container">
+                  <input class="input-box input-box--large" type="text" name="year" id="year" placeholder="YYYY" maxlength="4">
+                </div>
+              </div>
+            </div>
+            <div class="form__datetime-field">
+              <div class="datetime-field-name-container">
+                <p class="t-form t-form--regular datetime-field-name">Pick a time</p>
+              </div>
+              <div class="input-containers">
+                <div class="input-container">
+                  <label class="screen-reader-only" for="hour">Hour</label>
+                  <input class="input-box input-box--small" type="text" name="hour" id="hour" placeholder="09" maxlength="2">
+                </div>
+                <div class="input-container">
+                  <input class="input-box input-box--small" type="text" name="minute" id="minute" placeholder="00" maxlength="2">
+                </div>
+                <div class="dropdown-container">
+                  <div class="dropdown dropdown--meridiem" id="dropdown-trigger">
+                    <div id="selected-meridiem" class="dropdown__selected">AM</div>
+                    <div class="dropdown__arrow" id="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="11"><path fill="none" stroke="#9E7F66" stroke-width="2" d="M1 1l8 8 8-8"/></svg></div>
+                    <div class="dropdown__items" id="dropdown-menu">
+                      <div class="dropdown__item">
+                        <svg class="dropdown__item__checkmark checked" xmlns="http://www.w3.org/2000/svg" width="13" height="11"><path fill="none" stroke="#9E7F66" stroke-width="2" d="M1 5.897l2.767 2.767L11.432 1"/></svg>
+                        <p class="t-form t-form--regular">AM</p>
+                      </div>
+                      <div class="dropdown__item">
+                        <svg class="dropdown__item__checkmark" xmlns="http://www.w3.org/2000/svg" width="13" height="11"><path fill="none" stroke="#9E7F66" stroke-width="2" d="M1 5.897l2.767 2.767L11.432 1"/></svg>
+                        <p class="t-form t-form--regular">PM</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form__number-picker">
+              <button class="number-picker__button" id="minus">
+                <span class="screen-reader-only">minus</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="3"><path fill="#9E7F66" d="M6.425 2.977V.601H.629v2.376z"/></svg>
+              </button>
+              <p class="t-form t-form--bold"><span id="number-of-people">4</span> people</p>
+              <button class="number-picker__button" id="plus">
+                <span class="screen-reader-only">plus</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11"><path fill="#9E7F66" d="M6.227 10.156V6.727h3.429V4.342H6.227V.913H3.842v3.429H.413v2.385h3.429v3.429z"/></svg>
+              </button>
+            </div>       
+            <button class="btn btn--light btn--make-reservation" id="btn-reservation">Make Reservation</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    
+  </main>
 
 </body>
+<script src="reservations.js"></script>
 </html>
