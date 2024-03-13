@@ -1,102 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="./styles/style.css">
-  <title>Frontend Mentor | Dine Website Challenge</title>
-  <script defer src="./booking.js"></script>
-  <link rel="stylesheet" href="style_reservation.css">
-</head>
-<body>
-  <main>
-    <section class="reservations">
-      <div class="reservations__bg-1"></div>
-      <div class="reservations__bg-2"></div>
-      <div class="reservations__container">
-        <div class="logo">
-          <h1>dine</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Dine - Booking</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/5225b7dab1.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style_reservation.css" />
+  </head>
+  <body>
+    <main class="booking-container">
+      <picture>
+        <source
+          srcset="
+            images/booking/hero-bg-tablet.jpg    1x,
+            images/booking/hero-bg-tablet@2x.jpg 2x
+          "
+          media="(max-width: 1200px) and (min-width: 700px)"
+        />
+        <source
+          srcset="
+            images/booking/hero-bg-mobile.jpg    1x,
+            images/booking/hero-bg-mobile@2x.jpg 2x
+          "
+          media="(max-width: 700px)"
+        />
+        <img
+          alt="hero-bg"
+          srcset="
+            images/booking/hero-bg-desktop.jpg    1x,
+            images/booking/hero-bg-desktop@2x.jpg 2x
+          "
+          src="images/homepage/hero-bg-desktop.jpg"
+          class="booking-container__bg"
+        />
+      </picture>
+
+      <a href="/">
+        <img
+          src="images/logo.svg"
+          alt="logo"
+          class="logo booking-container__logo"
+        />
+      </a>
+
+      <div class="booking-container__content">
+        <div class="booking-container__intro">
+          <h1 class="heading-1 mb-small">Reservations</h1>
+          <p class="paragraph">
+            We can’t wait to host you. If you have any special requirements
+            please feel free to call on the phone number below. We’ll be happy
+            to accommodate you.
+          </p>
+          <a href="#form" class="btn btn--light booking-container__intro-btn"
+            >Reserve Place</a
+          >
         </div>
-        <div class="reservations__content">
-          <div class="reservations__content__text">
-            <h1 class="reservations-h1">Reservations</h1>
-            <p class="reservations-info">We can’t wait to host you. If you have any special requirements please feel free to call on the phone number below. We’ll be happy to accommodate you.</p>
-            <a href="#reserve-place" class="btn btn--dark btn--reserve">Reserve Place</a>
+
+        <form class="form" id="form" autocomplete="off">
+          <div
+            class="form__input-container form__input-container--lg"
+            id="name-container"
+          >
+            <input
+              type="text"
+              class="form__input"
+              id="name"
+              placeholder="Name"
+              aria-label="Name"
+            />
           </div>
-          <div class="form reservations__content__form">
-            <div class="form__input-field form__input-field--text">
-              <input class="input-box" type="text" name="name" id="name" placeholder="Name">
-            </div>
-            <div class="form__input-field form__input-field--text">
-              <input class="input-box" type="email" name="email" id="email" placeholder="Email">
-            </div>
-            <div class="form__datetime-field">
-              <div class="datetime-field-name-container">
-                <p class="t-form t-form--regular datetime-field-name">Pick a date</p>
+
+          <div
+            class="form__input-container form__input-container--lg"
+            id="email-container"
+          >
+            <input
+              type="text"
+              class="form__input"
+              id="email"
+              placeholder="Email"
+              aria-label="Email"
+            />
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" id="date-label">Pick a date</label>
+            <div class="form__group">
+              <div class="form__input-container form__input-container--sm">
+                <input
+                  type="text"
+                  class="form__input"
+                  id="month"
+                  placeholder="MM"
+                  aria-label="Month"
+                />
               </div>
-              <div class="input-containers">
-                <div class="input-container">
-                  <input class="input-box input-box--small" type="text" name="month" id="month" placeholder="MM" maxlength="2">
-                </div>
-                <div class="input-container">
-                  <input class="input-box input-box--small" type="text" name="day" id="day" placeholder="DD" maxlength="2">
-                </div>
-                <div class="input-container">
-                  <input class="input-box input-box--large" type="text" name="year" id="year" placeholder="YYYY" maxlength="4">
-                </div>
+
+              <div class="form__input-container form__input-container--sm">
+                <input
+                  type="text"
+                  class="form__input"
+                  id="day"
+                  placeholder="DD"
+                  aria-label="Day"
+                />
+              </div>
+
+              <div class="form__input-container form__input-container--md">
+                <input
+                  type="text"
+                  class="form__input"
+                  id="year"
+                  placeholder="YYYY"
+                  aria-label="Year"
+                />
               </div>
             </div>
-            <div class="form__datetime-field">
-              <div class="datetime-field-name-container">
-                <p class="t-form t-form--regular datetime-field-name">Pick a time</p>
+          </div>
+          <div class="form__row">
+            <label class="form__label" id="time-label">Pick a time</label>
+            <div class="form__group">
+              <div class="form__input-container form__input-container--sm">
+                <input
+                  type="text"
+                  class="form__input"
+                  id="hour"
+                  placeholder="09"
+                  aria-label="Hour"
+                />
               </div>
-              <div class="input-containers">
-                <div class="input-container">
-                  <label class="screen-reader-only" for="hour">Hour</label>
-                  <input class="input-box input-box--small" type="text" name="hour" id="hour" placeholder="09" maxlength="2">
-                </div>
-                <div class="input-container">
-                  <input class="input-box input-box--small" type="text" name="minute" id="minute" placeholder="00" maxlength="2">
-                </div>
-                <div class="dropdown-container">
-                  <div class="dropdown dropdown--meridiem" id="dropdown-trigger">
-                    <div id="selected-meridiem" class="dropdown__selected">AM</div>
-                    <div class="dropdown__arrow" id="dropdown-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="11"><path fill="none" stroke="#9E7F66" stroke-width="2" d="M1 1l8 8 8-8"/></svg></div>
-                    <div class="dropdown__items" id="dropdown-menu">
-                      <div class="dropdown__item">
-                        <svg class="dropdown__item__checkmark checked" xmlns="http://www.w3.org/2000/svg" width="13" height="11"><path fill="none" stroke="#9E7F66" stroke-width="2" d="M1 5.897l2.767 2.767L11.432 1"/></svg>
-                        <p class="t-form t-form--regular">AM</p>
-                      </div>
-                      <div class="dropdown__item">
-                        <svg class="dropdown__item__checkmark" xmlns="http://www.w3.org/2000/svg" width="13" height="11"><path fill="none" stroke="#9E7F66" stroke-width="2" d="M1 5.897l2.767 2.767L11.432 1"/></svg>
-                        <p class="t-form t-form--regular">PM</p>
-                      </div>
+
+              <div class="form__input-container form__input-container--sm">
+                <input
+                  type="text"
+                  class="form__input"
+                  id="minute"
+                  placeholder="00"
+                  aria-label="Minutes"
+                />
+              </div>
+
+              <div
+                class="form__select-wrapper form__input-container form__input-container--md"
+              >
+                <div class="form__select" id="period-select">
+                  <input
+                    type="hidden"
+                    class="form__select-input"
+                    id="period"
+                    aria-label="Period"
+                  />
+                  <div
+                    class="form__input form__select-trigger"
+                    id="period-trigger"
+                  >
+                    <span>AM</span>
+                    <img
+                      class="form__arrow"
+                      src="images/icons/icon-arrow.svg"
+                      alt="arrow"
+                    />
+                  </div>
+                  <div class="form__options">
+                    <div class="form__option selected" data-value="AM">
+                      <img
+                        src="images/icons/icon-check.svg"
+                        alt="check"
+                        class="form__check"
+                      />
+                      <span>AM</span>
+                    </div>
+                    <div class="form__option" data-value="PM">
+                      <img
+                        src="images/icons/icon-check.svg"
+                        alt="check"
+                        class="form__check"
+                      />
+                      <span>PM</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="form__number-picker">
-              <button class="number-picker__button" id="minus">
-                <span class="screen-reader-only">minus</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="3"><path fill="#9E7F66" d="M6.425 2.977V.601H.629v2.376z"/></svg>
-              </button>
-              <p class="t-form t-form--bold"><span id="number-of-people">4</span> people</p>
-              <button class="number-picker__button" id="plus">
-                <span class="screen-reader-only">plus</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11"><path fill="#9E7F66" d="M6.227 10.156V6.727h3.429V4.342H6.227V.913H3.842v3.429H.413v2.385h3.429v3.429z"/></svg>
-              </button>
-            </div>       
-            <button class="btn btn--light btn--make-reservation" id="btn-reservation">Make Reservation</button>
           </div>
-        </div>
-      </div>
-    </section>
-  
-    
-  </main>
 
-</body>
-<script src="reservations.js"></script>
+          <div class="form__input-container form__input-container--lg">
+            <input type="hidden" id="people" aria-label="Number of people" />
+            <label for="people" class="form__input form__operator-row">
+              <span class="form__operator fas fa-minus" id="decrement"></span>
+              <span class="form__count" id="people-count"></span>
+              <span class="form__operator fas fa-plus" id="increment"></span>
+            </label>
+          </div>
+
+          <button class="btn btn--dark form__btn" type="submit">
+            Make Reservation
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <div class="success">
+      <div class="success__content">
+        <i class="success__close fas fa-times"></i>
+        <p class="success__text">Thank you for booking!</p>
+      </div>
+    </div>
+
+    <div class="booking-container__bottom-bg"></div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="reservations.js"></script>
+  </body>
 </html>
+

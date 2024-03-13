@@ -1,110 +1,198 @@
-// vars for dropdown menu
-const dropdownMenu = document.getElementById('dropdown-menu');
-const dropdownItems = document.querySelectorAll('.dropdown__item');
-const selectedMeridiem = document.getElementById('selected-meridiem');
-const dropdownTrigger = document.getElementById('dropdown-trigger');
-const dropdownArrow = document.getElementById('dropdown-arrow');
-// vars for number picker
-const numberOfPeople = document.getElementById('number-of-people');
-const minusButton = document.getElementById('minus');
-const plusButton = document.getElementById('plus');
-//vars for reservationButton
-const reservationButton = document.getElementById('btn-reservation');
-//vars for form elements
-const name = document.querySelector("input[name='name']");
-const email = document.querySelector("input[name='email']");
-const month = document.querySelector("input[name='month']");
-const day = document.querySelector("input[name='day']");
-const year = document.querySelector("input[name='year']");
-const hour = document.querySelector("input[name='hour']");
-const minute = document.querySelector("input[name='minute']");
-const errors = document.querySelectorAll('p.errormsg');
-const inputboxes = document.querySelectorAll('input.input-box');
-const datetimeFields = document.querySelectorAll('p.datetime-field-name');
+// MANAGING THE DROPDOWN SELECTOR
 
-dropdownTrigger.onclick = () => {
-  dropdownMenu.classList.toggle('open');
-  dropdownArrow.classList.toggle('open');
+$(".form__select").on("click", function () {
+    $(this).toggleClass("open");
+})
+
+$(".form__option").on("click", function () {
+    $(".form__option").removeClass("selected");
+    $(this).addClass("selected");
+    const selected = $(this).text();
+    $(this).parent().siblings(".form__select-trigger").children("span").text(selected);
+    $(this).parent().siblings(".form__select-input").val(selected);
+})
+
+
+// MANAGING THE PEOPLE COUNT SELECTOR
+
+var peopleCount = 4;
+$("#people").val(peopleCount);
+$("#people-count").text(peopleCount + " people");
+
+$("#decrement").click(function () {
+    if (peopleCount > 1) {
+        peopleCount--;
+        $("#people").val(peopleCount);
+    }
+
+    if (peopleCount > 1) {
+        $("#people-count").text(peopleCount + " people");
+    }
+    else {
+        $("#people-count").text(peopleCount + " person");
+    }
+})
+
+$("#increment").click(function () {
+    peopleCount++;
+    $("#people").val(peopleCount);
+    $("#people-count").text(peopleCount + " people");
+})
+
+
+// SUBMITTING THE FORM
+
+$(".form").on("submit", function (event) {
+    event.preventDefault();
+
+    const nameValid = validateName($("#name").val());
+    const emailValid = validateEmail($("#email").val());
+    const dateValid = validateDate($("#day").val(), $("#month").val(), $("#year").val());
+    const timeValid = validateTime($("#hour").val(), $("#minute").val(), $("#day").val(), $("#month").val(), $("#year").val());
+
+    const formValid = nameValid && emailValid && dateValid && timeValid;
+
+    if (formValid) {
+        event.target.reset();
+        $(".success").addClass("active");
+    }
+})
+
+// CLOSING THE SUCCESS MESSAGE
+
+$(".success__close").on("click", function () {
+    $(this).parent().parent().removeClass("active");
+})
+
+
+// CHECKING IF AN INPUT IS NUMERIC
+
+function isNumeric(input) {
+    return (input - 0) == input && input.length > 0;
 }
 
-dropdownItems.forEach(item => {  
-  item.onclick = () => {
-    selectedMeridiem.textContent = item.children[1].textContent;
-    // remove the old checked class
-    dropdownItems.forEach(oldItem => {
-      oldItem.children[0].classList.remove('checked');
-    });
-    // add the checked class to current clicked item
-    item.children[0].classList.add('checked');
-  }
-});
 
-minusButton.onclick = () => changeNumberOfPeople(false);
-plusButton.onclick = () => changeNumberOfPeople(true);
+// VALIDATING NAME
 
-function changeNumberOfPeople(isPlus) {
-  let currentNumberOfPeople = parseInt(numberOfPeople.textContent);
-  if (isPlus) {
-    numberOfPeople.textContent = currentNumberOfPeople + 1;
-  } else {
-    if (currentNumberOfPeople != 1) {
-      numberOfPeople.textContent = currentNumberOfPeople - 1;
+function validateName(name) {
+    const nameField = $("#name-container, #name");
+
+    if (name === "") {
+        nameField.addClass("error");
+        return false;
     }
-  }
+    else {
+        nameField.removeClass("error");
+        return true;
+    }
 }
 
-reservationButton.onclick = () => {
-  formValidate();
+
+// VALIDATING EMAIL
+
+function isEmail(email) {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
 }
 
-function formValidate() {
-  if (name.value == '') {
-    errors[0].classList.add('show');
-    inputboxes[0].classList.add('error');
-  }
-  if (email.value == '') {
-    errors[1].classList.add('show');
-    inputboxes[1].classList.add('error');
-  }
-  if (month.value == '' || day.value == '' || year.value == '') {
-    errors[2].classList.add('show');
-    datetimeFields[0].classList.add('error');
-    if (month.value == '') {
-      inputboxes[2].classList.add('error');
+function validateEmail(email) {
+    const emailField = $("#email-container, #email");
+
+    if (email === "") {
+        emailField.addClass("error").removeClass("invalid");
+        return false;
     }
-    if (day.value == '') {
-      inputboxes[3].classList.add('error');
+    else {
+        if (isEmail(email)) {
+            emailField.removeClass("error").removeClass("invalid");
+            return true;
+        }
+        else {
+            emailField.addClass("error").addClass("invalid");
+            return false;
+        }
     }
-    if (year.value == '') {
-      inputboxes[4].classList.add('error');
-    }
-  }
-  if (hour.value == '' || minute.value == '') {
-    errors[3].classList.add('show');
-    datetimeFields[1].classList.add('error');
-    if (hour.value == '') {
-      inputboxes[5].classList.add('error');
-    }
-    if (minute.value == '') {
-      inputboxes[6].classList.add('error');
-    }
-  }
 }
 
-inputboxes.forEach((box, i) => {
-  // remove error status when focus
-  box.onfocus = () => {
-    box.classList.remove('error');
-    if (i == 0) {
-      errors[0].classList.remove('show');
-    } else if (i == 1) {
-      errors[1].classList.remove('show');
-    } else if (i > 1 && i < 5) {
-      errors[2].classList.remove('show');
-      datetimeFields[0].classList.remove('error');
-    } else {
-      errors[3].classList.remove('show');
-      datetimeFields[1].classList.remove('error');
+// VALIDATING DATE
+
+function daysInMonth(month, year) {
+    switch (month) {
+        case 1:
+            return (year % 4 === 0 && year % 100) || year % 400 === 0 ? 29 : 28;
+        case 8: case 3: case 5: case 10:
+            return 30;
+        default:
+            return 31
     }
-  }
-});
+}
+
+function isValidDate(day, month, year) {
+    month = parseInt(month, 10) - 1;
+    return month >= 0 && month < 12 && day > 0 && day <= daysInMonth(month, year);
+}
+
+function validateDate(day, month, year) {
+    const dateField = $("#date-label, #day, #month, #year");
+    const dateValid = isValidDate(day, month, year);
+
+    const inputDate = new Date(moment(new Date(year, month - 1, day)).format("LL"));
+    const currentDate = new Date(moment(new Date()).format("LL"));
+    const datePassed = inputDate.getTime() < currentDate.getTime();
+
+    if (day === "" || month === "" || year === "") {
+        dateField.addClass("error").removeClass("invalid");
+        return false;
+    }
+    else {
+        if (!dateValid || datePassed) {
+            dateField.addClass("error").addClass("invalid");
+            return false;
+        }
+        else {
+            dateField.removeClass("error").removeClass("invalid");
+            return true;
+        }
+    }
+}
+
+// VALIDATING TIME
+
+function validateTime(hour, minute, day, month, year) {
+    const timeField = $("#time-label, #hour, #minute");
+    const timeValid = validateHour(hour) && validateMinute(minute);
+    const timePassed = new Date(year, month - 1, day, hour, minute).getTime() <= Date.now();
+
+    if (hour === "" || minute === "") {
+        timeField.addClass("error").removeClass("invalid");
+        return false;
+    }
+    else {
+        if (!timeValid || timePassed) {
+            timeField.addClass("error").addClass("invalid");
+            return false;
+        }
+        else {
+            timeField.removeClass("error").removeClass("invalid");
+            return true;
+        }
+    }
+}
+
+function validateHour(hour) {
+    if (hour != "" && (hour < 1 || hour > 12)) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function validateMinute(minute) {
+    if (minute != "" && (minute < 0 || minute > 59)) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
